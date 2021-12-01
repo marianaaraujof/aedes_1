@@ -3361,7 +3361,13 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.System.Acts.GoToLayout,
 		C3.Plugins.System.Cnds.OnLayoutStart,
 		C3.Plugins.System.Acts.AddVar,
-		C3.Plugins.Text.Acts.SetText
+		C3.Plugins.Text.Acts.SetText,
+		C3.Plugins.System.Cnds.EvaluateExpression,
+		C3.Plugins.Sprite.Acts.SetVisible,
+		C3.Plugins.Text.Acts.SetVisible,
+		C3.Plugins.Sprite.Acts.Destroy,
+		C3.Plugins.System.Cnds.Else,
+		C3.Plugins.System.Acts.ResetGlobals
 	];
 };
 self.C3_JsPropNameTable = [
@@ -3396,6 +3402,10 @@ self.C3_JsPropNameTable = [
 	{pontuação: 0},
 	{pontuação2: 0},
 	{pontuação3: 0},
+	{mensagemfim: 0},
+	{restart: 0},
+	{restarttxt: 0},
+	{underbutton: 0},
 	{Pontos: 0}
 ];
 }
@@ -3501,7 +3511,13 @@ self.C3_ExpressionFuncs = [
 		p => {
 			const v0 = p._GetNode(0).GetVar();
 			return () => v0.GetValue();
-		}
+		},
+		p => {
+			const v0 = p._GetNode(0).GetVar();
+			return () => ((v0.GetValue()) > (4) ? 1 : 0);
+		},
+		() => "Parabéns! Você completou!",
+		() => "Você completou!"
 ];
 
 
